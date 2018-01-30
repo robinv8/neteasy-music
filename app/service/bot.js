@@ -12,11 +12,22 @@ class Bot extends BaseBot {
       };
     });
     this.addIntentHandler('palymusic163', () => {
-      const card = new Bot.Directive.AudioPlayer.Play('http://m10.music.126.net/20180130171651/891295312686922d7fa2e970559fc482/ymusic/8e74/a24f/39a9/fac7654066a9e3822162adca6678db54.mp3', 'REPLACE_ALL');
-      return Promise.resolve({
-        card,
-        outputSpeech: '开始播放',
-      });
+      const operate = this.getSlot('operate_type');
+      console.log(operate);
+      if (operate === 'play') {
+        const directive = new Bot.Directive.AudioPlayer.Play('http://zhangmenshiting.qianqian.com/data2/music/fdc0f7d7a9c20fdfdd4951fa4a661ed8/305637166/305637166.mp3?xcode=1ce034001535c06c3d7cab37c0a62272', 'REPLACE_ALL');
+        return Promise.resolve({
+          directives: [ directive ],
+          outputSpeech: '开始播放',
+        });
+      } else if (operate === 'pause') {
+        const directive = new Bot.Directive.AudioPlayer.Stop();
+        return Promise.resolve({
+          directives: [ directive ],
+          outputSpeech: '',
+        });
+      }
+
     });
     this.addSessionEndedHandler(() => {
       this.endSession();

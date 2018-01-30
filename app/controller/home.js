@@ -17,10 +17,7 @@ class HomeController extends Controller {
 
     // 不需要监控
     // b.run() 返回一个Promise的实例
-    ctx.body = await b.run().then(result => {
-      console.log(result);
-      return result;
-    });
+    ctx.body = await b.run().then(result => result);
   }
 
   play2() {
