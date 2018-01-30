@@ -17,10 +17,14 @@ class HomeController extends Controller {
 
     // 不需要监控
     // b.run() 返回一个Promise的实例
-    b.run().then(result => {
-      ctx.body = result;
+    ctx.body = await b.run().then(result => {
       console.log(result);
+      return result;
     });
+  }
+
+  play2() {
+    this.ctx.body = '{"version":"2.0","context":{},"session":{"attributes":{}},"response":{"directives":[],"shouldEndSession":false,"card":null,"outputSpeech":{"type":"PlainText","text":"欢迎使用设备控制!"},"reprompt":null}}';
   }
 }
 
