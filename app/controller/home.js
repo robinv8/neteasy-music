@@ -4,13 +4,13 @@ const Bot = require('../service/bot');
 
 class HomeController extends Controller {
   async index() {
-    this.ctx.body = 'hi, egg';
+    this.ctx.body = 'hi, eggsss';
   }
 
   async play() {
     const { ctx } = this;
     const { request } = ctx;
-    const b = new Bot(JSON.parse(request.rawBody));
+    const b = new Bot(JSON.parse(request.rawBody), ctx);
     // 开启签名认证
     // 为了避免你的服务被非法请求，建议你验证请求是否来自于DuerOS
     b.initCertificate(request.headers, request.rawBody).enableVerifyRequestSign();
