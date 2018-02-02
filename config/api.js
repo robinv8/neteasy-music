@@ -1,7 +1,6 @@
 'use strict';
 const Api = {
       url: 'http://music163.rnode.me/',
-      //手机登录
       phoneLogin: {
         path: 'login/cellphone',
         params:
@@ -10,7 +9,6 @@ const Api = {
               password: ''
             }
       },
-      //私人FM
       personal_fm: {
         path: 'personal_fm'
       },

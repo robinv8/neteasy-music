@@ -1,6 +1,7 @@
 'use strict';
 const Controller = require('egg').Controller;
 const Bot = require('../service/bot');
+const urlQueue = require('../utils/urlqueue');
 
 class HomeController extends Controller {
   async index() {
@@ -21,7 +22,7 @@ class HomeController extends Controller {
   }
 
   play2() {
-    this.ctx.body = '{"version":"2.0","context":{},"session":{"attributes":{}},"response":{"directives":[],"shouldEndSession":false,"card":null,"outputSpeech":{"type":"PlainText","text":"欢迎使用设备控制!"},"reprompt":null}}';
+    this.ctx.body = urlQueue.getAll();
   }
 }
 
