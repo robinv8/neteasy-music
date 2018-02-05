@@ -18,6 +18,12 @@ const Api = {
         params: {
           id: ''
         }
+      },
+      userPlaylist: {
+        path: 'user/playlist',
+        params: {
+          uid: ''
+        }
       }
     }
 ;

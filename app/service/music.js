@@ -23,6 +23,21 @@ class MusicService extends Service {
       dataType: 'json',
     });
   }
+
+  /**
+   * 获取用户歌单
+   * @param item
+   * @returns {Promise<any>}
+   */
+  async getUserPlaylist(item) {
+    const { path, params } = Api.userPlaylist;
+    params.id = item.account.id;
+    const url = builderurl(Api.url + path, params);
+    return this.ctx.curl(url, {
+      method: 'get',
+      dataType: 'json',
+    });
+  }
 }
 
 module.exports = MusicService;

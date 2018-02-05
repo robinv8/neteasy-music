@@ -1,18 +1,17 @@
 'use strict';
 const _ = require('lodash');
-let urlList = [];
 
-function deleteUrl() {
-  _.remove(urlList, (n, index) => {
-    return urlList.length - 1 === index;
-  })
-}
+let urlList = [],
+    flag = 0;
 
 module.exports = {
-  getUrl: () => {
-    const urlObj = _.cloneDeep(_.last(urlList));
-    deleteUrl();
-    return urlObj;
+  /**
+   * 获取音乐
+   * @param type 参数值 next、prev
+   * @returns {*}
+   */
+  getUrl: (type = 'next') => {
+    return urlList[ type === 'next' ? ++flag : --flag ];
   },
   setUrl: (urlArray) => {
     urlList = _.concat(urlArray, urlList)

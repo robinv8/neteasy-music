@@ -1,10 +1,7 @@
 'use strict';
+const Service = require('egg').Service;
 
-class Player {
-  constructor(musics = []) {
-    this.musicList = musics;
-  }
-
+class Player extends Service {
   play() {
 
   }
